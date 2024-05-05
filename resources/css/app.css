@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer tailwind-base, primevue, tailwind-utilities;
+
+@layer tailwind-base {
+    @tailwind base;
+}
+
+@layer tailwind-utilities {
+    @tailwind components;
+    @tailwind utilities;
+}
+
+
+.sidebar-menu {
+    @apply
+    block p-4 rounded-full
+    hover:bg-gray-100
+    dark:hover:bg-gray-700
+    font-[400]
+  }
+  .sidebar-menu.router-link-exact-active {
+    @apply bg-gray-100  dark:bg-gray-700 font-semibold
+  }
+
+  @layer components {
+    .table, .table-sm {
+      @apply w-full divide-y divide-gray-200 dark:divide-gray-800 border border-gray-200
+    }
+    .table .thead, .table .thead-center, .table-sm .thead, .table-sm .thead-center {
+      @apply bg-white dark:bg-gray-700
+    }
+    .table .thead .th {
+      @apply px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider
+    }
+    .table-sm .thead .th {
+      @apply px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider
+    }
+    .table .thead-center .th {
+      @apply px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider
+    }
+    .table-sm .thead-center .th {
+      @apply px-4 py-2 text-center text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider
+    }
+    .table .tbody, .table-sm .tbody {
+      @apply bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700
+    }
+    .table .tbody .td {
+      @apply px-6 py-4 text-gray-700 dark:text-gray-300
+    }
+    .table-sm .tbody .td {
+      @apply px-4 py-2 text-gray-700 dark:text-gray-300
+    }
+  
+    
+    .table-border-sm {
+      @apply w-full
+    }
+    .table-border-sm td, .table-border-sm th {
+      @apply border p-1
+    }
+    .table-border-sm.col-align-top td{
+      @apply align-top
+    }
+    .table-text-xs td,
+    .table-text-xs th {
+      @apply text-xs
+    }
+  
+    
+    .t-form {
+      @apply text-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full dark:bg-gray-800 dark:text-gray-300 border dark:border-gray-700 shadow-sm border-gray-300 rounded-md
+    }
+    
+    .t-form-append {
+      @apply block font-medium text-gray-400 mt-2 ml-2 absolute top-0 right-1 bg-white dark:bg-gray-800 px-2
+    }
+  
+    .t-form[disabled] {
+      @apply bg-gray-100 text-gray-500
+    }
+    .t-form-label {
+      @apply text-sm font-medium text-gray-700 dark:text-gray-300 cursor-pointer
+    }
+    .t-form-radio {
+      @apply 
+      focus:ring-brand-500
+      h-4
+      w-4
+      text-brand-600
+      border-gray-300
+      cursor-pointer
+    }
+    .t-form-radio[disabled] {
+      @apply
+      focus:ring-gray-500
+      h-4
+      w-4
+      text-gray-600
+      border-gray-300
+    }
+  
+    .t-form-otp {
+      @apply
+      rounded-md 
+      ring-1
+      ring-gray-100
+      focus:ring-indigo-600
+      focus:border-indigo-600
+      text-center
+      w-12
+      text-lg
+      font-bold
+    }
+    .t-form-otp[disabled] {
+      @apply text-gray-500
+    }
+    .t-form-otp.is-complete {
+      @apply 
+      ring-indigo-500
+    }
+    .form-row {
+      @apply sm:grid sm:grid-cols-4 sm:gap-4 border-y dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900
+    }
+    
+    .sidebar-menu {
+      @apply
+      block p-4 rounded-lg
+            hover:bg-gray-100
+            dark:hover:bg-gray-700
+    }
+    .sidebar-menu.router-link-exact-active {
+      @apply bg-gray-100  dark:bg-gray-700
+    }
+  }
+  
+:root {
+  --primary-50: 236 253 245;
+  --primary-100: 209 250 229;
+  --primary-200: 167 243 208;
+  --primary-300: 110 231 183;
+  --primary-400: 52 211 153;
+  --primary-500: 16 185 129;
+  --primary-600: 5 150 105;
+  --primary-700: 4 120 87;
+  --primary-800: 6 95 70;
+  --primary-900: 4 78 56;
+  --primary-950: 2 44 34;
+  --surface-0: 255 255 255;
+  --surface-50: 248 250 252;
+  --surface-100: 241 245 249;
+  --surface-200: 226 232 240;
+  --surface-300: 203 213 225;
+  --surface-400: 148 163 184;
+  --surface-500: 100 116 139;
+  --surface-600: 71 85 105;
+  --surface-700: 45 55 72;
+  --surface-800: 30 41 59;
+  --surface-900: 15 23 42;
+  --surface-950: 3 6 23;
+}

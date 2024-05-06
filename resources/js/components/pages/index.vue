@@ -76,6 +76,7 @@
                     <Column field="normal" header="Normal"></Column>
                     <Column field="dataIndex" header="Table Indexed"></Column>
                     <Column field="dataJson" header="Table JSON"></Column>
+                    <Column field="dataCache" header="Cache"></Column>
                     <template #empty>
                         <div class="flex justify-center">
                             Tidak Ada Data
@@ -92,6 +93,7 @@
                                 <Column :footer="MainStore.avgNormal" />
                                 <Column :footer="MainStore.avgIndex" />
                                 <Column :footer="MainStore.avgJson" />
+                                <Column :footer="MainStore.avgCache" />
                             </Row>
                         </ColumnGroup>
                 </DataTable>

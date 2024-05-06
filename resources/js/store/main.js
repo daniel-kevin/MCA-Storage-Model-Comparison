@@ -51,6 +51,13 @@ export const useMainStore = defineStore('main', {
 			})
 			return total/state.queryNum
 		},
+		avgCache: (state) => {
+			let total = 0
+			state.tableData.forEach((e) => {
+				total += e.dataCache
+			})
+			return total/state.queryNum
+		},
 	},
 	actions: {
 		generateData(){
@@ -73,7 +80,7 @@ export const useMainStore = defineStore('main', {
             this.loadingData = true
 			this.tableData = []
 			for(let i=0; i<this.queryNum; i++){
-				this.tableData.push({normal:0,dataIndex:0,dataJson:0, key:i})
+				this.tableData.push({normal:0,dataIndex:0,dataJson:0, dataCache:0, key:i})
 				let res = await axios.get(`/api/detail-transaksi-index/get-data`,{
 					params:{
 						q: this.queryParams
@@ -99,14 +106,23 @@ export const useMainStore = defineStore('main', {
 				if(res.data.status){
 					this.tableData[i].dataJson = res.data.time
 				}
+
+				res = await axios.get(`/api/detail-transaksi-cache/get-data`,{
+					params:{
+						q: this.queryParams
+					}
+				})
+				if(res.data.status){
+					this.tableData[i].dataCache = res.data.time
+				}
 			}
 			this.chartData = {
-				labels: ['Normal', 'Indexed', 'JSON'],
+				labels: ['Normal', 'Indexed', 'JSON', 'Cache'],
 				datasets:[{
 					label: 'Rata - Rata Waktu',
-					data: [this.avgNormal, this.avgIndex, this.avgJson],
-					backgroundColor: ['rgba(249, 115, 22, 0.2)', 'rgba(6, 182, 212, 0.2)', 'rgb(107, 114, 128, 0.2)',],
-					borderColor: ['rgb(249, 115, 22)', 'rgb(6, 182, 212)', 'rgb(107, 114, 128)',],
+					data: [this.avgNormal, this.avgIndex, this.avgJson, this.avgCache],
+					backgroundColor: ['rgba(249, 115, 22, 0.2)', 'rgba(6, 182, 212, 0.2)', 'rgb(107, 114, 128, 0.2)', 'rgba(139, 92, 246 0.2)'],
+					borderColor: ['rgb(249, 115, 22)', 'rgb(6, 182, 212)', 'rgb(107, 114, 128)', 'rgb(139, 92, 246)'],
 					borderWidth: 1
 				}]
 			}

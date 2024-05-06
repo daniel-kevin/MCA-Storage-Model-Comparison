@@ -51,6 +51,10 @@ Route::prefix('api/')->name('api.')->group(function () {
         Route::post('store-data',[DetailTransaksiController::class,'storeJSONData']);
         Route::get('get-data',[DetailTransaksiController::class,'getJSONData']);
     });
+    Route::prefix('detail-transaksi-cache/')->name('detail-transaksi-cache.')->group(function () {
+        // Route::post('store-data',[DetailTransaksiController::class,'storeCacheData']);
+        Route::get('get-data',[DetailTransaksiController::class,'getCachedData']);
+    });
 });
 
 Route::get('/spa/{any}', function () {

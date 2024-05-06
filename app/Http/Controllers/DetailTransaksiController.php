@@ -8,6 +8,7 @@ use App\Models\MasterTransaksi;
 use App\Models\MasterTransaksiIndex;
 use App\Models\TransaksiJSON;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class DetailTransaksiController extends Controller
 {
@@ -53,6 +54,30 @@ class DetailTransaksiController extends Controller
         $timeStart = microtime(true);
 
         $data = TransaksiJSON::get();
+
+        $timeEnd = microtime(true);
+
+        $timeTaken = ($timeEnd - $timeStart);
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Berhasil mengambil data',
+            'data' => $data,
+            'time' => $timeTaken,
+        ]);
+    }
+
+    public function getCachedData(Request $request){
+
+        $cacheTime = 3600;
+        $timeStart = microtime(true);
+
+        $data = Cache::remember('t_transaksi', $cacheTime, function (){
+            return DetailTransaksiIndex::with([
+                'masterTransaksi.pelanggan',
+                'barang'
+            ])->get();
+        });
 
         $timeEnd = microtime(true);
 

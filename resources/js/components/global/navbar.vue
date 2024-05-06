@@ -1,6 +1,6 @@
 
 <template>
-    <div class="sticky top-0">
+    <div class="sticky top-0 z-50">
         <Menubar :model="items" class="bg-white bg-opacity-75 backdrop-blur-lg"/>
     </div>
 </template>
